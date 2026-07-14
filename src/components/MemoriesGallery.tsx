@@ -5,6 +5,7 @@ import type { PhotoVariant } from '../types/memory'
 import { MemoryPolaroid } from './MemoryPolaroid'
 import { MemoryLightbox } from './MemoryLightbox'
 import styles from './MemoriesGallery.module.css'
+import { publicPath } from '../lib/publicPath'
 
 interface Props {
   memories: Memory[]
@@ -170,9 +171,9 @@ export function MemoriesGallery({ memories, featuredIds }: Props) {
   return (
     <section className={styles.gallery} aria-label="Memory gallery">
       <div className={styles.header}>
-        <img src="/flowers/babys-breath.svg" alt="" aria-hidden="true" className={styles.headerFlower}/>
+        <img src={publicPath('flowers/babys-breath.svg')} alt="" aria-hidden="true" className={styles.headerFlower}/>
         <h2 className={styles.heading}>Kenangan Kita</h2>
-        <img src="/flowers/babys-breath.svg" alt="" aria-hidden="true" className={styles.headerFlower + ' ' + styles.headerFlowerRight}/>
+        <img src={publicPath('flowers/babys-breath.svg')} alt="" aria-hidden="true" className={styles.headerFlower + ' ' + styles.headerFlowerRight}/>
       </div>
 
       <div className={styles.grid}>

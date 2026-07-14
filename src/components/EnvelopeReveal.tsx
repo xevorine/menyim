@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
 import type { Memory } from '../types/memory'
 import styles from './EnvelopeReveal.module.css'
+import { publicPath } from '../lib/publicPath'
 
 interface Props {
   isOpen: boolean
@@ -82,7 +83,7 @@ export function EnvelopeReveal({ isOpen, firstPhoto, onComplete }: Props) {
         {isOpen && PETALS.map((p, i) => (
           <motion.img
             key={i}
-            src="/flowers/petal.svg"
+            src={publicPath('flowers/petal.svg')}
             alt=""
             aria-hidden="true"
             className={styles.petal}
@@ -113,7 +114,7 @@ export function EnvelopeReveal({ isOpen, firstPhoto, onComplete }: Props) {
             transition={{ delay: 0.5, duration: 0.9, ease: [0.34, 1.56, 0.64, 1] }}
           >
             <img
-              src={firstPhoto.thumbnailSrc}
+              src={publicPath(firstPhoto.thumbnailRelativePath)}
               alt={firstPhoto.caption || firstPhoto.name}
               className="photo-protected"
               onContextMenu={e => e.preventDefault()}

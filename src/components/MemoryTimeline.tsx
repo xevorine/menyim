@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import type { Memory } from '../types/memory'
 import styles from './MemoryTimeline.module.css'
+import { publicPath } from '../lib/publicPath'
 
 interface Props {
   memories: Memory[]
@@ -27,7 +28,7 @@ function TimelineItem({ memory, index }: { memory: Memory; index: number }) {
       <div className={styles.card}>
         <div className={styles.imageWrapper}>
           <img
-            src={memory.thumbnailSrc}
+            src={publicPath(memory.thumbnailRelativePath)}
             alt={memory.caption || memory.name}
             loading="lazy"
             decoding="async"
@@ -59,9 +60,9 @@ export function MemoryTimeline({ memories }: Props) {
   return (
     <section className={styles.timeline} aria-label="Memory timeline">
       <div className={styles.header}>
-        <img src="/flowers/leaf.svg" alt="" aria-hidden="true" className={styles.leafLeft}/>
+        <img src={publicPath('flowers/leaf.svg')} alt="" aria-hidden="true" className={styles.leafLeft}/>
         <h2 className={styles.heading}>Jejak Kenangan</h2>
-        <img src="/flowers/leaf.svg" alt="" aria-hidden="true" className={styles.leafRight}/>
+        <img src={publicPath('flowers/leaf.svg')} alt="" aria-hidden="true" className={styles.leafRight}/>
       </div>
 
       <div className={styles.track}>

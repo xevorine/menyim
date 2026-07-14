@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import styles from './PetalLayer.module.css'
+import { publicPath } from '../lib/publicPath'
 
 interface Petal {
   id: number
@@ -11,7 +12,7 @@ interface Petal {
   asset: string
 }
 
-const PETAL_ASSETS = ['/flowers/loose-petal.svg', '/flowers/petal.svg', '/flowers/small-blossom.svg']
+const PETAL_ASSETS = ['flowers/loose-petal.svg', 'flowers/petal.svg', 'flowers/small-blossom.svg']
 
 function buildPetals(count: number): Petal[] {
   // Deterministic positions based on index
@@ -50,7 +51,7 @@ export function PetalLayer({ count = 12, className = '' }: Props) {
       {petals.map(p => (
         <motion.img
           key={p.id}
-          src={p.asset}
+          src={publicPath(p.asset)}
           alt=""
           draggable={false}
           className={styles.petal}

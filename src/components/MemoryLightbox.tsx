@@ -4,6 +4,7 @@ import { useDrag } from '@use-gesture/react'
 import type { Memory } from '../types/memory'
 import { usePreloadImages } from '../hooks/usePreloadImages'
 import styles from './MemoryLightbox.module.css'
+import { publicPath } from '../lib/publicPath'
 
 interface Props {
   memories: Memory[]
@@ -18,8 +19,8 @@ export function MemoryLightbox({ memories, initialIndex, onClose }: Props) {
 
   // Preload adjacent images
   const adjacentSrcs = [
-    memories[index - 1]?.originalSrc,
-    memories[index + 1]?.originalSrc,
+    memories[index - 1]?.relativePath ? publicPath(memories[index - 1].relativePath) : null,
+    memories[index + 1]?.relativePath ? publicPath(memories[index + 1].relativePath) : null,
   ].filter(Boolean) as string[]
   usePreloadImages(adjacentSrcs)
 
@@ -104,7 +105,7 @@ export function MemoryLightbox({ memories, initialIndex, onClose }: Props) {
             className={styles.photoWrapper}
           >
             <img
-              src={current.originalSrc}
+              src={publicPath(current.relativePath)}
               alt={current.caption || current.name}
               className={styles.photo + ' photo-protected'}
               draggable={false}

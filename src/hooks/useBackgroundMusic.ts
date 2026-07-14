@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { giftContent } from '../data/giftContent'
+import { publicPath } from '../lib/publicPath'
 
 /**
  * Background music hook.
@@ -24,7 +25,7 @@ export function useBackgroundMusic() {
     if (!giftContent.audioEnabled) return
 
     const audio = new Audio()
-    audio.src = giftContent.audioSrc
+    audio.src = publicPath(giftContent.audioSrc.replace(/^\//, ''))
     audio.loop = true
     audio.volume = 0.25
     audio.muted = isMuted

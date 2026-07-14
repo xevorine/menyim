@@ -7,6 +7,7 @@ import { PetalLayer } from './PetalLayer'
 import { finalBouquetFlowers } from '../data/flowerDecorations'
 import styles from './BouquetComposition.module.css'
 import { giftContent } from '../data/giftContent'
+import { publicPath } from '../lib/publicPath'
 
 interface Props {
   photos: Memory[]
@@ -45,7 +46,7 @@ export function BouquetComposition({ photos }: Props) {
       >
         <p className={'script ' + styles.forText}>For</p>
         <h2 className={styles.name}>{giftContent.recipientName}</h2>
-        <img src="/flowers/ribbon.svg" alt="" className={styles.ribbonDecor}/>
+        <img src={publicPath('flowers/ribbon.svg')} alt="" className={styles.ribbonDecor}/>
       </motion.div>
     </div>
   )

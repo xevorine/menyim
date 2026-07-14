@@ -1,8 +1,8 @@
 export interface Memory {
   id: string
   name: string
-  originalSrc: string
-  thumbnailSrc: string
+  relativePath: string
+  thumbnailRelativePath: string
   width: number
   height: number
   folder: string

@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import type { FlowerItem } from '../data/flowerDecorations'
+import { publicPath } from '../lib/publicPath'
 import { flowerBloom, flowerGrow, flowerSway } from '../animations/flowerVariants'
 import { useMemo } from 'react'
 
@@ -21,7 +22,7 @@ export function AnimatedFlower({ flower, index = 0 }: Props) {
 
   return (
     <motion.img
-      src={`/flowers/${flower.asset}`}
+      src={publicPath(`flowers/${flower.asset}`)}
       alt=""
       draggable={false}
       style={{

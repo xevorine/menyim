@@ -152,7 +152,7 @@ async function generateThumbnail(srcPath, relPath, originalSrc) {
   const relWithoutExt = relPath.replace(/[^a-z0-9/]/gi, '_')
   const thumbName = relWithoutExt.replace(/\//g, '__') + '.webp'
   const thumbPath = path.join(THUMBNAILS_DIR, thumbName)
-  const thumbPublicUrl = `/photos/thumbnails/${encodeURIComponent(thumbName)}`
+  const thumbPublicUrl = `photos/thumbnails/${encodeURIComponent(thumbName)}`
 
   // Skip if thumbnail is newer than source
   const srcMtime = getMtime(srcPath)
@@ -245,13 +245,11 @@ export const generatedMemories: Memory[] = []
     const name = path.basename(relPathForward)
     const id = makeId(relPathForward)
 
-    // Build public URLs
-    const memoriesRelative = `photos/memories/${relPathForward}`
-    const originalSrc = '/' + memoriesRelative.split('/').map(s => encodeURIComponent(s)).join('/')
+    const relativePath = `photos/memories/${relPathForward}`.split('/').map(s => encodeURIComponent(s)).join('/')
 
-    const { thumbnailSrc, width, height } = await generateThumbnail(absPath, relPathForward, originalSrc)
+    const { thumbnailSrc, width, height } = await generateThumbnail(absPath, relPathForward, relativePath)
 
-    entries.push({ id, name, originalSrc, thumbnailSrc, width, height, folder })
+    entries.push({ id, name, relativePath, thumbnailRelativePath: thumbnailSrc, width, height, folder })
   }
 
   // Serialize to TypeScript
@@ -259,8 +257,8 @@ export const generatedMemories: Memory[] = []
     return `  {
     id: ${JSON.stringify(e.id)},
     name: ${JSON.stringify(e.name)},
-    originalSrc: ${JSON.stringify(e.originalSrc)},
-    thumbnailSrc: ${JSON.stringify(e.thumbnailSrc)},
+    relativePath: ${JSON.stringify(e.relativePath)},
+    thumbnailRelativePath: ${JSON.stringify(e.thumbnailRelativePath)},
     width: ${e.width},
     height: ${e.height},
     folder: ${JSON.stringify(e.folder)},

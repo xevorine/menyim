@@ -9,6 +9,7 @@ import { getPhotoVariant } from '../animations/photoVariants'
 import { useReducedMotion } from 'framer-motion'
 import { galleryRowClusters } from '../data/flowerDecorations'
 import styles from './ScatteredMemoriesBoard.module.css'
+import { publicPath } from '../lib/publicPath'
 
 interface Props {
   memories: Memory[]
@@ -74,7 +75,7 @@ const ScatteredCard = memo(function ScatteredCard({
         onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
       >
         <img
-          src={memory.thumbnailSrc}
+          src={publicPath(memory.thumbnailRelativePath)}
           alt={memory.caption || memory.name}
           loading="lazy"
           decoding="async"
@@ -113,9 +114,9 @@ export function ScatteredMemoriesBoard({ memories }: Props) {
     <section className={styles.section} aria-label="Scattered memories">
       {/* Section header */}
       <div className={styles.header}>
-        <img src="/flowers/babys-breath.svg" alt="" aria-hidden="true" className={styles.headerFlower}/>
-        <h2 className={styles.heading}>Memories</h2>
-        <img src="/flowers/babys-breath.svg" alt="" aria-hidden="true" className={styles.headerFlower + ' ' + styles.headerFlowerRight}/>
+        <img src={publicPath('flowers/babys-breath.svg')} alt="" aria-hidden="true" className={styles.headerFlower}/>
+        <h2 className={styles.heading}>Kenangan Kita</h2>
+        <img src={publicPath('flowers/babys-breath.svg')} alt="" aria-hidden="true" className={styles.headerFlower + ' ' + styles.headerFlowerRight}/>
       </div>
 
       {/* Decorative subtitle */}

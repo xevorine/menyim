@@ -3,6 +3,7 @@ import type { Memory } from '../types/memory'
 import type { PhotoVariant } from '../types/memory'
 import styles from './MemoryPolaroid.module.css'
 import clsx from 'clsx'
+import { publicPath } from '../lib/publicPath'
 
 interface Props {
   memory: Memory
@@ -49,7 +50,7 @@ export function MemoryPolaroid({
         onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } } : undefined}
       >
         <img
-          src={memory.thumbnailSrc}
+          src={publicPath(memory.thumbnailRelativePath)}
           alt={memory.caption || memory.name}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"

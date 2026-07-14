@@ -5,6 +5,7 @@ import { MemoryLightbox } from '../components/MemoryLightbox'
 import { useState, useCallback } from 'react'
 import type { Memory } from '../types/memory'
 import styles from './MemoriesPage.module.css'
+import { publicPath } from '../lib/publicPath'
 
 export function MemoriesPage() {
   const { all, featured } = useMemories()
@@ -30,9 +31,9 @@ export function MemoriesPage() {
           ← Kembali
         </button>
         <div className={styles.logoArea}>
-          <img src="/flowers/rose.svg" alt="" aria-hidden="true" style={{ width: 36 }}/>
+          <img src={publicPath('flowers/rose.svg')} alt="" aria-hidden="true" style={{ width: 36 }}/>
           <h1 className={styles.title}>Semua Kenangan</h1>
-          <img src="/flowers/rose.svg" alt="" aria-hidden="true" style={{ width: 36, transform: 'scaleX(-1)' }}/>
+          <img src={publicPath('flowers/rose.svg')} alt="" aria-hidden="true" style={{ width: 36, transform: 'scaleX(-1)' }}/>
         </div>
         <div style={{ marginLeft: 'auto', width: 80 }}/>
       </header>

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import type { Memory } from '../types/memory'
 import styles from './FloatingPhoto.module.css'
+import { publicPath } from '../lib/publicPath'
 
 interface Props {
   memory: Memory
@@ -39,7 +40,7 @@ export function FloatingPhoto({ memory, size = 160, delay = 0, rotation = 0, sty
     >
       <div className={styles.polaroidFrame}>
         <img
-          src={memory.thumbnailSrc}
+          src={publicPath(memory.thumbnailRelativePath)}
           alt={memory.caption || memory.name}
           loading="lazy"
           decoding="async"

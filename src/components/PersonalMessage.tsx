@@ -4,6 +4,7 @@ import { giftContent } from '../data/giftContent'
 import { FloralFrame } from './FloralFrame'
 import { PenguinSticker } from './PenguinSticker'
 import styles from './PersonalMessage.module.css'
+import { publicPath } from '../lib/publicPath'
 
 export function PersonalMessage() {
   const ref = useRef<HTMLElement>(null)
@@ -30,7 +31,7 @@ export function PersonalMessage() {
             animate={isInView ? (shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 30, y: -20, rotate: 10 }) : {}}
             transition={{ delay: 0.5, duration: 0.8, ease: 'easeOut' }}
           >
-            <img src="/flowers/ribbon.svg" alt=""/>
+            <img src={publicPath('flowers/ribbon.svg')} alt=""/>
           </motion.div>
 
         <motion.p
