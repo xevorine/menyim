@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" fill="none">
+  <!-- Single falling petal -->
+  <path d="M15 2 Q22 4 24 10 Q22 18 15 18 Q8 18 6 10 Q8 4 15 2Z" fill="#e8a0a0" opacity="0.75"/>
+  <path d="M15 4 Q19 6 20 11 Q18 16 15 16" stroke="#d4889a" stroke-width="0.8" fill="none" opacity="0.5"/>
+</svg>

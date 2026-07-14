@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 110" fill="none">
+  <!-- Peony: full, lush, layered petals -->
+  <path d="M50 65 Q44 80 42 90" stroke="#8aaa8a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M45 76 Q33 70 35 61 Q42 66 45 76Z" fill="#8aaa8a" opacity="0.8"/>
+  <!-- Outer petals -->
+  <ellipse cx="50" cy="25" rx="13" ry="22" fill="#f9c0d0" opacity="0.8" transform="rotate(0 50 48)"/>
+  <ellipse cx="50" cy="25" rx="13" ry="22" fill="#f0a8c0" opacity="0.78" transform="rotate(45 50 48)"/>
+  <ellipse cx="50" cy="25" rx="13" ry="22" fill="#f9c0d0" opacity="0.8" transform="rotate(90 50 48)"/>
+  <ellipse cx="50" cy="25" rx="13" ry="22" fill="#f0a8c0" opacity="0.78" transform="rotate(135 50 48)"/>
+  <ellipse cx="50" cy="25" rx="13" ry="22" fill="#f9c0d0" opacity="0.8" transform="rotate(180 50 48)"/>
+  <ellipse cx="50" cy="25" rx="13" ry="22" fill="#f0a8c0" opacity="0.78" transform="rotate(225 50 48)"/>
+  <ellipse cx="50" cy="25" rx="13" ry="22" fill="#f9c0d0" opacity="0.8" transform="rotate(270 50 48)"/>
+  <ellipse cx="50" cy="25" rx="13" ry="22" fill="#f0a8c0" opacity="0.78" transform="rotate(315 50 48)"/>
+  <!-- Mid petals -->
+  <ellipse cx="50" cy="30" rx="9" ry="16" fill="#f4b0c8" opacity="0.9" transform="rotate(22 50 48)"/>
+  <ellipse cx="50" cy="30" rx="9" ry="16" fill="#ec98b8" opacity="0.88" transform="rotate(67 50 48)"/>
+  <ellipse cx="50" cy="30" rx="9" ry="16" fill="#f4b0c8" opacity="0.9" transform="rotate(112 50 48)"/>
+  <ellipse cx="50" cy="30" rx="9" ry="16" fill="#ec98b8" opacity="0.88" transform="rotate(157 50 48)"/>
+  <ellipse cx="50" cy="30" rx="9" ry="16" fill="#f4b0c8" opacity="0.9" transform="rotate(202 50 48)"/>
+  <ellipse cx="50" cy="30" rx="9" ry="16" fill="#ec98b8" opacity="0.88" transform="rotate(247 50 48)"/>
+  <ellipse cx="50" cy="30" rx="9" ry="16" fill="#f4b0c8" opacity="0.9" transform="rotate(292 50 48)"/>
+  <ellipse cx="50" cy="30" rx="9" ry="16" fill="#ec98b8" opacity="0.88" transform="rotate(337 50 48)"/>
+  <!-- Inner center -->
+  <circle cx="50" cy="48" r="12" fill="#f9d0e0"/>
+  <circle cx="50" cy="48" r="7" fill="#f0b8cc"/>
+  <circle cx="50" cy="48" r="3" fill="#d4889a"/>
+</svg>

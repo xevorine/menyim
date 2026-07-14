@@ -1,0 +1,44 @@
+.section {
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-ivory) 100%);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
+  padding-bottom: calc(clamp(3rem, 8vw, 5rem) + env(safe-area-inset-bottom, 0px));
+}
+
+.messageArea {
+  text-align: center;
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.finalMsg {
+  font-family: var(--font-script);
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  color: var(--color-burgundy);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 0 clamp(1rem, 4vw, 2rem);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.buttons .btn {
+  flex: 1 1 auto;
+  min-width: 180px;
+  max-width: 280px;
+  text-align: center;
+}

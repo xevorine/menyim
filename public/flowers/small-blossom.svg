@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <!-- Small cherry blossom -->
+  <ellipse cx="20" cy="8" rx="5" ry="9" fill="#f9c0d8" opacity="0.9" transform="rotate(0 20 20)"/>
+  <ellipse cx="20" cy="8" rx="5" ry="9" fill="#f0a8c8" opacity="0.88" transform="rotate(72 20 20)"/>
+  <ellipse cx="20" cy="8" rx="5" ry="9" fill="#f9c0d8" opacity="0.9" transform="rotate(144 20 20)"/>
+  <ellipse cx="20" cy="8" rx="5" ry="9" fill="#f0a8c8" opacity="0.88" transform="rotate(216 20 20)"/>
+  <ellipse cx="20" cy="8" rx="5" ry="9" fill="#f9c0d8" opacity="0.9" transform="rotate(288 20 20)"/>
+  <circle cx="20" cy="20" r="4" fill="#f5e070"/>
+  <circle cx="20" cy="20" r="2" fill="#d4a020"/>
+</svg>

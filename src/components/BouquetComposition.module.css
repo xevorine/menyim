@@ -1,0 +1,58 @@
+.composition {
+  position: relative;
+  min-height: min(90vh, 700px);
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 20%, #fdf4ea, #f5ede0 55%, #ecddd0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finalPetals {
+  z-index: 5;
+}
+
+.bouquet {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.nameTag {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid var(--color-cream-dark);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem 2rem;
+  z-index: 10;
+  min-width: 200px;
+}
+
+.forText {
+  font-family: var(--font-script);
+  color: var(--color-dusty-pink);
+  font-size: 1.1rem;
+  margin-bottom: 0.15rem;
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-burgundy);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  line-height: 1.1;
+}
+
+.ribbonDecor {
+  width: 100px;
+  margin: 0.5rem auto 0;
+  display: block;
+  opacity: 0.7;
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 50" fill="none">
+  <!-- Light leaf: simple oval with veins -->
+  <path d="M5 40 Q20 5 55 8 Q40 50 5 40Z" fill="#a8c898" opacity="0.85"/>
+  <path d="M5 40 Q28 22 55 8" stroke="#7a9a6a" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+  <path d="M30 20 Q26 28 20 36" stroke="#7a9a6a" stroke-width="0.8" opacity="0.4"/>
+  <path d="M40 14 Q36 22 30 30" stroke="#7a9a6a" stroke-width="0.8" opacity="0.4"/>
+</svg>

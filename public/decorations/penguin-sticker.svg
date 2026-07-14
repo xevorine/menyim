@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <!-- Sticker white border and soft shadow -->
+    <filter id="sticker-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#sticker-shadow)">
+    <!-- White die-cut border base -->
+    <path d="M 60 30 
+             C 40 10, 10 30, 25 70 
+             C 10 90, 15 140, 40 170 
+             C 60 195, 140 195, 160 170 
+             C 185 140, 190 90, 175 70 
+             C 190 30, 160 10, 140 30 
+             C 120 15, 80 15, 60 30 Z" 
+          fill="#ffffff" stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/>
+    
+    <!-- Penguin Body (Soft Charcoal/Blue-Grey) -->
+    <path d="M 50 140 C 40 80, 60 40, 100 40 C 140 40, 160 80, 150 140 C 145 170, 55 170, 50 140 Z" fill="#3a4b5c"/>
+    
+    <!-- White Belly/Face -->
+    <path d="M 65 140 C 55 90, 70 55, 100 55 C 130 55, 145 90, 135 140 C 130 160, 70 160, 65 140 Z" fill="#ffffff"/>
+    
+    <!-- Flippers -->
+    <path d="M 50 100 C 30 110, 25 130, 45 120 Z" fill="#3a4b5c"/>
+    <path d="M 150 100 C 170 110, 175 130, 155 120 Z" fill="#3a4b5c"/>
+    
+    <!-- Feet -->
+    <path d="M 70 165 C 60 175, 80 180, 85 170 Z" fill="#ffb347"/>
+    <path d="M 130 165 C 140 175, 120 180, 115 170 Z" fill="#ffb347"/>
+    
+    <!-- Eyes -->
+    <circle cx="85" cy="85" r="5" fill="#2a2a2a"/>
+    <circle cx="115" cy="85" r="5" fill="#2a2a2a"/>
+    
+    <!-- Blush -->
+    <ellipse cx="70" cy="95" rx="7" ry="4" fill="#ff99cc" opacity="0.6"/>
+    <ellipse cx="130" cy="95" rx="7" ry="4" fill="#ff99cc" opacity="0.6"/>
+    
+    <!-- Beak -->
+    <path d="M 95 90 Q 100 98 105 90 Z" fill="#ffb347"/>
+  </g>
+</svg>

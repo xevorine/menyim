@@ -1,0 +1,67 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 40%, #fdf7f0 0%, #f5ede0 50%, #ecddd0 100%);
+  padding: 2rem 1.5rem;
+  padding-top: calc(2rem + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+}
+
+.envelopeWrapper {
+  width: min(260px, 70vw);
+  filter: drop-shadow(0 8px 24px rgba(125, 40, 64, 0.18));
+}
+
+.envelope {
+  width: 100%;
+  height: auto;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.openingTitle {
+  font-family: var(--font-script);
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  color: var(--color-dusty-pink);
+  font-weight: 600;
+}
+
+.recipientName {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 700;
+  color: var(--color-burgundy);
+  font-style: italic;
+}
+
+.subtitle {
+  font-size: clamp(0.875rem, 3vw, 1rem);
+  color: var(--color-text-muted);
+}
+
+.openBtn {
+  font-size: 1.1rem;
+  padding: 0.9rem 2.5rem;
+  letter-spacing: 0.06em;
+}
+
+

@@ -1,0 +1,65 @@
+.section {
+  background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-ivory) 50%, var(--color-cream) 100%);
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 3rem);
+  position: relative;
+  overflow: hidden;
+}
+
+
+.card {
+  max-width: 680px;
+  margin: 0 auto;
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 6vw, 3.5rem);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  border: 1px solid var(--color-cream-dark);
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      var(--color-cream-dark) 27px,
+      var(--color-cream-dark) 28px
+    );
+  background-position: 0 3.2rem;
+}
+
+.ribbon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.ribbon img {
+  width: min(150px, 40vw);
+}
+
+.salutation {
+  font-family: var(--font-script);
+  font-size: clamp(1.3rem, 4vw, 1.7rem);
+  color: var(--color-burgundy);
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+
+.body {
+  margin-bottom: 1.5rem;
+}
+
+.para {
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  line-height: 1.85;
+  color: var(--color-text);
+  margin-bottom: 0.85rem;
+}
+
+.signature {
+  font-family: var(--font-script);
+  font-size: clamp(1.15rem, 3.5vw, 1.5rem);
+  color: var(--color-dusty-pink);
+  text-align: right;
+  font-weight: 600;
+}
+

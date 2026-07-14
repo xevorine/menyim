@@ -1,0 +1,36 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 40%, #fdf7f0, #f5ede0);
+}
+
+.envelope {
+  width: min(280px, 75vw);
+  position: relative;
+  z-index: 2;
+}
+
+.petal {
+  position: absolute;
+  width: 36px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.photoReveal {
+  position: absolute;
+  width: min(180px, 48vw);
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.photoReveal img {
+  width: 100%;
+  border-radius: 8px;
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80" fill="none">
+  <!-- Main leaf -->
+  <path d="M30 70 Q10 50 15 30 Q20 15 30 10 Q40 15 45 30 Q50 50 30 70Z" fill="#8aac8a" opacity="0.9"/>
+  <!-- Vein -->
+  <path d="M30 70 Q30 40 30 10" stroke="#6b9e6b" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M30 35 Q22 28 18 22" stroke="#6b9e6b" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M30 35 Q38 28 42 22" stroke="#6b9e6b" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M30 48 Q20 40 16 34" stroke="#6b9e6b" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M30 48 Q40 40 44 34" stroke="#6b9e6b" stroke-width="1" fill="none" opacity="0.5"/>
+</svg>

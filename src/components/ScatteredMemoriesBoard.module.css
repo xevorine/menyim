@@ -1,0 +1,235 @@
+.section {
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-ivory) 40%, var(--color-cream) 100%);
+  padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(3rem, 8vw, 5rem);
+  overflow: hidden;
+}
+
+/* ─── Header ─────────────────────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+}
+
+.heading {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-burgundy);
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+}
+
+.headerFlower {
+  width: clamp(36px, 7vw, 60px);
+  opacity: 0.6;
+}
+
+.headerFlowerRight {
+  transform: scaleX(-1);
+}
+
+.subtitle {
+  text-align: center;
+  font-family: var(--font-script);
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  color: var(--color-dusty-pink);
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+  opacity: 0.85;
+}
+
+/* ─── Board ───────────────────────────────────────────────────── */
+.board {
+  position: relative;
+  width: 100%;
+  /* height set inline */
+}
+
+/* ─── Background flower clusters ─────────────────────────── */
+.galleryCluster {
+  /* Spread vertically over the board */
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 600px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.boardPetals {
+  /* Ensure petals overlay background but go under cards */
+  z-index: 2;
+}
+
+/* ─── Individual card shell ───────────────────────────────────── */
+.card {
+  position: absolute;
+  transform-origin: center;
+  cursor: pointer;
+  /* transform done by Framer Motion */
+}
+
+/* ─── Polaroid ─────────────────────────────────────────────── */
+.polaroid {
+  background: white;
+  padding: 6px 6px 28px;
+  border-radius: 2px;
+  box-shadow: var(--shadow-photo);
+}
+
+/* ─── Tape ──────────────────────────────────────────────────── */
+.tape {
+  background: transparent;
+}
+
+/* ─── Circular ──────────────────────────────────────────────── */
+.circular {
+  background: transparent;
+}
+
+/* ─── Torn ──────────────────────────────────────────────────── */
+.torn {
+  background: transparent;
+}
+
+/* ─── Clean ─────────────────────────────────────────────────── */
+.clean {
+  background: transparent;
+}
+
+/* ─── Image wrappers ─────────────────────────────────────────── */
+.imageWrapper {
+  overflow: hidden;
+  border-radius: 2px;
+  display: block;
+  position: relative;
+}
+
+.imageWrapper:focus-visible {
+  outline: 3px solid var(--color-dusty-pink);
+  outline-offset: 3px;
+}
+
+.circularWrapper {
+  border-radius: 50% !important;
+  aspect-ratio: 1;
+  border: 4px solid white;
+  box-shadow: var(--shadow-photo);
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.imageWrapper:hover .photo,
+.imageWrapper:focus-visible .photo {
+  transform: scale(1.06);
+}
+
+/* Circular: make image fill the circle */
+.circularWrapper .photo {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tape strip decoration */
+.tape .imageWrapper {
+  position: relative;
+}
+
+.tape .tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  width: 38%;
+  height: 18px;
+  background: rgba(200, 169, 110, 0.42);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Torn paper clip path */
+.torn .imageWrapper {
+  clip-path: polygon(
+    0% 5%, 4% 0%, 9% 4%, 16% 0%, 23% 3%, 31% 0%, 40% 3%, 50% 0%,
+    60% 3%, 69% 0%, 77% 2%, 85% 0%, 92% 3%, 100% 0%,
+    100% 94%, 96% 100%, 88% 96%, 79% 100%, 70% 97%,
+    60% 100%, 50% 97%, 40% 100%, 30% 97%, 20% 100%, 10% 96%, 0% 100%
+  );
+}
+
+/* Clean */
+.clean .imageWrapper {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-photo);
+  overflow: hidden;
+}
+
+/* ─── Caption ────────────────────────────────────────────────── */
+.caption {
+  font-family: var(--font-script);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  padding: 0.25rem 0.2rem 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─── Empty state ────────────────────────────────────────────── */
+.empty {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.emptyIcon {
+  font-size: 3.5rem;
+  display: block;
+}
+
+.empty h3 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-burgundy);
+  font-size: 1.5rem;
+}
+
+.empty p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.code {
+  display: inline-block;
+  background: rgba(125, 40, 64, 0.1);
+  color: var(--color-burgundy);
+  padding: 0.3em 0.75em;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+/* ─── Mobile: keep board usable on narrow screens ────────────── */
+@media (max-width: 500px) {
+  .card {
+    /* Clamp left so cards don't overflow on very narrow screens */
+    max-width: 90vw;
+  }
+}

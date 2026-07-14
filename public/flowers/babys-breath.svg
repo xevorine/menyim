@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80" fill="none">
+  <!-- Tiny clustered flowers (baby's breath style) -->
+  <circle cx="12" cy="20" r="4" fill="white" opacity="0.9"/>
+  <circle cx="12" cy="20" r="2" fill="#f5ede0"/>
+  <circle cx="24" cy="14" r="3.5" fill="white" opacity="0.9"/>
+  <circle cx="24" cy="14" r="1.8" fill="#f5ede0"/>
+  <circle cx="36" cy="18" r="4" fill="white" opacity="0.9"/>
+  <circle cx="36" cy="18" r="2" fill="#f5ede0"/>
+  <circle cx="48" cy="12" r="3" fill="white" opacity="0.85"/>
+  <circle cx="48" cy="12" r="1.5" fill="#f5ede0"/>
+  <circle cx="20" cy="30" r="3" fill="white" opacity="0.85"/>
+  <circle cx="20" cy="30" r="1.5" fill="#f5ede0"/>
+  <circle cx="42" cy="28" r="3.5" fill="white" opacity="0.9"/>
+  <circle cx="42" cy="28" r="1.8" fill="#f5ede0"/>
+  <!-- Thin branching stems -->
+  <path d="M30 70 Q28 55 12 20" stroke="#8aac8a" stroke-width="1.2" fill="none" opacity="0.7"/>
+  <path d="M30 70 Q32 52 24 14" stroke="#8aac8a" stroke-width="1.2" fill="none" opacity="0.7"/>
+  <path d="M30 70 Q31 50 36 18" stroke="#8aac8a" stroke-width="1.2" fill="none" opacity="0.7"/>
+  <path d="M30 70 Q34 48 48 12" stroke="#8aac8a" stroke-width="1.2" fill="none" opacity="0.7"/>
+  <path d="M30 70 Q29 54 20 30" stroke="#8aac8a" stroke-width="1" fill="none" opacity="0.6"/>
+  <path d="M30 70 Q33 52 42 28" stroke="#8aac8a" stroke-width="1" fill="none" opacity="0.6"/>
+</svg>

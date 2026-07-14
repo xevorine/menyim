@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 100" fill="none">
+  <!-- Cup petals -->
+  <path d="M40 18 Q50 10 54 22 Q58 34 40 42 Q22 34 26 22 Q30 10 40 18Z" fill="#e8a0a0" opacity="0.9"/>
+  <path d="M40 18 Q52 14 55 28 Q57 38 40 44 Q23 38 25 28 Q28 14 40 18Z" fill="#f5c4c4" opacity="0.6"/>
+  <!-- Side petals -->
+  <path d="M28 30 Q16 24 18 36 Q20 46 32 42Z" fill="#d4889a" opacity="0.8"/>
+  <path d="M52 30 Q64 24 62 36 Q60 46 48 42Z" fill="#d4889a" opacity="0.8"/>
+  <!-- Stem -->
+  <path d="M40 44 Q40 58 38 76" stroke="#8aac8a" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <!-- Leaves -->
+  <path d="M39 60 Q26 54 28 44 Q36 50 39 60Z" fill="#8aac8a" opacity="0.85"/>
+  <path d="M39 68 Q52 62 50 52 Q42 58 39 68Z" fill="#6b9e6b" opacity="0.8"/>
+</svg>
