@@ -40,8 +40,8 @@ export function BouquetComposition({ photos }: Props) {
       {/* Recipient name */}
       <motion.div
         className={styles.nameTag}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+        initial={{ opacity: 0, scale: 0.8, x: "-50%", y: "-50%" }}
+        animate={isInView ? { opacity: 1, scale: 1, x: "-50%", y: "-50%" } : {}}
         transition={{ delay: 0.2, duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
       >
         <p className={'script ' + styles.forText}>For</p>

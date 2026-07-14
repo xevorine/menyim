@@ -44,7 +44,7 @@ const ScatteredCard = memo(function ScatteredCard({
       className={styles.card + ' ' + styles[variant]}
       style={{
         position: 'absolute',
-        left: `${xPct}%`,
+        left: `calc(${xPct}% - ${(BASE_SIZE * scale) / 2}px)`,
         top: yOffset,
         zIndex: zIndex,
         width: BASE_SIZE * scale,
