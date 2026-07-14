@@ -172,7 +172,7 @@ export function MemoriesGallery({ memories, featuredIds }: Props) {
     <section className={styles.gallery} aria-label="Memory gallery">
       <div className={styles.header}>
         <img src={publicPath('flowers/babys-breath.svg')} alt="" aria-hidden="true" className={styles.headerFlower}/>
-        <h2 className={styles.heading}>Kenangan Kita</h2>
+        <h2 className={styles.heading}>Memories</h2>
         <img src={publicPath('flowers/babys-breath.svg')} alt="" aria-hidden="true" className={styles.headerFlower + ' ' + styles.headerFlowerRight}/>
       </div>
 
