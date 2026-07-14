@@ -11,6 +11,8 @@ import { MemoryTimeline } from '../components/MemoryTimeline'
 import { PersonalMessage } from '../components/PersonalMessage'
 import { FinalGift } from '../components/FinalGift'
 import { BackgroundMusic } from '../components/BackgroundMusic'
+import { GrowingVines } from '../components/GrowingVines'
+import { MascotJourney } from '../components/MascotJourney'
 
 type Scene = 'intro' | 'envelope' | 'main'
 
@@ -57,6 +59,8 @@ export function HomePage() {
 
       {scene === 'main' && (
         <main>
+          <GrowingVines />
+          <MascotJourney />
           {/* Scene 2: Flower + first photos */}
           <FlowerReveal photos={opening}/>
 

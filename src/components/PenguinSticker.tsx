@@ -8,13 +8,17 @@ interface Props {
 
 export function PenguinSticker({ className = '', style }: Props) {
   const [isTapped, setIsTapped] = useState(false)
+  const [clickCount, setClickCount] = useState(0)
   const shouldReduceMotion = useReducedMotion()
 
   const handleTap = useCallback(() => {
+    setClickCount(c => c + 1)
     if (isTapped) return
     setIsTapped(true)
     setTimeout(() => setIsTapped(false), 1500)
   }, [isTapped])
+  
+  const showEasterEgg = clickCount >= 3
 
   return (
     <motion.div
@@ -109,6 +113,25 @@ export function PenguinSticker({ className = '', style }: Props) {
             animate={isTapped ? { scaleY: 1.5 } : {}}
             style={{ originY: '90px' }}
           />
+          
+          {/* Easter Egg Hat (Flower) */}
+          {showEasterEgg && (
+            <motion.g
+              initial={{ scale: 0, y: -20 }}
+              animate={{ scale: 1, y: 0 }}
+              transition={{ type: "spring", bounce: 0.5 }}
+              style={{ originX: '100px', originY: '45px' }}
+            >
+              {/* Petals */}
+              <circle cx="100" cy="35" r="8" fill="#ff99cc"/>
+              <circle cx="90" cy="45" r="8" fill="#ff99cc"/>
+              <circle cx="110" cy="45" r="8" fill="#ff99cc"/>
+              <circle cx="95" cy="55" r="8" fill="#ff99cc"/>
+              <circle cx="105" cy="55" r="8" fill="#ff99cc"/>
+              {/* Center */}
+              <circle cx="100" cy="45" r="5" fill="#ffd700"/>
+            </motion.g>
+          )}
         </motion.g>
       </svg>
       

@@ -7,7 +7,7 @@ export const photoSlideOut: Variants = {
     x: 0,
     rotate: custom?.rotation || 0,
     scale: 1,
-    transition: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }
+    transition: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: (custom?.index || 0) * 0.1 }
   })
 }
 
@@ -18,7 +18,7 @@ export const photoDrop: Variants = {
     y: 0,
     scale: 1,
     rotate: custom?.rotation || 0,
-    transition: { duration: 0.6, ease: 'easeOut' }
+    transition: { duration: 0.6, ease: 'easeOut', delay: (custom?.index || 0) * 0.1 }
   })
 }
 
@@ -29,7 +29,7 @@ export const photoUnfold: Variants = {
     rotateX: 0,
     y: 0,
     rotate: custom?.rotation || 0,
-    transition: { duration: 0.8, ease: 'easeOut' }
+    transition: { duration: 0.8, ease: 'easeOut', delay: (custom?.index || 0) * 0.1 }
   })
 }
 
@@ -38,7 +38,7 @@ export const photoSwing: Variants = {
   visible: (custom) => ({
     opacity: 1,
     rotate: custom?.rotation || 0,
-    transition: { type: 'spring', stiffness: 50, damping: 8 }
+    transition: { type: 'spring', stiffness: 50, damping: 8, delay: (custom?.index || 0) * 0.1 }
   })
 }
 
@@ -48,7 +48,7 @@ export const photoExpand: Variants = {
     opacity: 1,
     scale: 1,
     rotate: custom?.rotation || 0,
-    transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }
+    transition: { duration: 0.6, ease: [0.34, 1.56, 0.64, 1], delay: (custom?.index || 0) * 0.1 }
   })
 }
 

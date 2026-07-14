@@ -8,6 +8,8 @@ import { finalBouquetFlowers } from '../data/flowerDecorations'
 import styles from './BouquetComposition.module.css'
 import { giftContent } from '../data/giftContent'
 import { publicPath } from '../lib/publicPath'
+import { AxolotlSticker } from './AxolotlSticker'
+import { PenguinSticker } from './PenguinSticker'
 
 interface Props {
   photos: Memory[]
@@ -47,6 +49,50 @@ export function BouquetComposition({ photos }: Props) {
         <p className={'script ' + styles.forText}>For</p>
         <h2 className={styles.name}>{giftContent.recipientName}</h2>
         <img src={publicPath('flowers/ribbon.svg')} alt="" className={styles.ribbonDecor}/>
+      </motion.div>
+
+      {/* Floating photos behind/around the bouquet */}
+      {visiblePhotos.map((photo, i) => {
+        const placement = PHOTO_PLACEMENTS[i]
+        if (!placement) return null
+        return (
+          <motion.div
+            key={photo.id}
+            initial={{ opacity: 0, y: 100, rotate: placement.rotation - 10 }}
+            animate={isInView ? { opacity: 1, y: 0, rotate: placement.rotation } : {}}
+            transition={{ duration: 1.2, delay: 0.6 + placement.delay, ease: 'easeOut' }}
+            style={{
+              position: 'absolute',
+              ...placement.style,
+              zIndex: 1, // behind the bouquet
+            }}
+          >
+            <FloatingPhoto 
+              memory={photo} 
+              size={placement.size} 
+              delay={placement.delay} 
+            />
+          </motion.div>
+        )
+      })}
+
+      {/* Mascots sliding in */}
+      <motion.div
+        initial={{ opacity: 0, x: -100, rotate: -20 }}
+        animate={isInView ? { opacity: 1, x: 0, rotate: -10 } : {}}
+        transition={{ duration: 1.5, delay: 1.5, type: 'spring' }}
+        style={{ position: 'absolute', bottom: '10%', left: '5%', zIndex: 10, width: 120, height: 120 }}
+      >
+        <AxolotlSticker />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 100, rotate: 20 }}
+        animate={isInView ? { opacity: 1, x: 0, rotate: 10 } : {}}
+        transition={{ duration: 1.5, delay: 1.7, type: 'spring' }}
+        style={{ position: 'absolute', bottom: '5%', right: '5%', zIndex: 10, width: 120, height: 120 }}
+      >
+        <PenguinSticker />
       </motion.div>
     </div>
   )

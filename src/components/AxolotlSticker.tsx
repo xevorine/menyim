@@ -8,13 +8,17 @@ interface Props {
 
 export function AxolotlSticker({ className = '', style }: Props) {
   const [isTapped, setIsTapped] = useState(false)
+  const [clickCount, setClickCount] = useState(0)
   const shouldReduceMotion = useReducedMotion()
 
   const handleTap = useCallback(() => {
+    setClickCount(c => c + 1)
     if (isTapped) return
     setIsTapped(true)
     setTimeout(() => setIsTapped(false), 2000)
   }, [isTapped])
+  
+  const showEasterEgg = clickCount >= 3
 
   return (
     <motion.div
@@ -130,7 +134,7 @@ export function AxolotlSticker({ className = '', style }: Props) {
         </motion.g>
       </svg>
       
-      {/* Bubbles on Tap */}
+      {/* Bubbles and Hearts on Tap */}
       {isTapped && !shouldReduceMotion && (
         <>
           <motion.div
@@ -151,6 +155,34 @@ export function AxolotlSticker({ className = '', style }: Props) {
             animate={{ opacity: 0, y: -60, scale: 1.8 }}
             transition={{ duration: 1.5, ease: 'easeOut', delay: 0.2 }}
           />
+          
+          {showEasterEgg && (
+            <>
+              {/* Hearts Easter Egg */}
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={`heart-${i}`}
+                  style={{ 
+                    position: 'absolute', 
+                    top: '20%', 
+                    left: `${40 + (Math.random() * 20 - 10)}%`,
+                    fontSize: '1.5rem',
+                    pointerEvents: 'none'
+                  }}
+                  initial={{ opacity: 1, y: 0, scale: 0.5 }}
+                  animate={{ 
+                    opacity: 0, 
+                    y: -100 - (Math.random() * 50),
+                    x: (Math.random() * 60 - 30),
+                    scale: 1 + Math.random() 
+                  }}
+                  transition={{ duration: 1.5 + Math.random(), ease: 'easeOut' }}
+                >
+                  ❤️
+                </motion.div>
+              ))}
+            </>
+          )}
         </>
       )}
     </motion.div>

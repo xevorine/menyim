@@ -10,6 +10,8 @@ import { useReducedMotion } from 'framer-motion'
 import { galleryRowClusters } from '../data/flowerDecorations'
 import styles from './ScatteredMemoriesBoard.module.css'
 import { publicPath } from '../lib/publicPath'
+import { InstantCameraPhoto } from './InstantCameraPhoto'
+import { JourneyLine } from './JourneyLine'
 
 interface Props {
   memories: Memory[]
@@ -35,8 +37,16 @@ const ScatteredCard = memo(function ScatteredCard({
   const isInView = useInView(ref, { once: true, margin: '200px 0px 200px 0px' })
   const shouldReduceMotion = useReducedMotion()
   const entranceVariant = getPhotoVariant(index)
+  const [isFlipped, setIsFlipped] = useState(false)
 
   const BASE_SIZE = 155  // px — base photo width before scale
+
+  const handleCardClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+    // Prevent flipping if clicking the view full screen button
+    const target = e.target as HTMLElement
+    if (target.closest(`.${styles.viewFullBtn}`)) return
+    setIsFlipped(prev => !prev)
+  }
 
   return (
     <motion.div
@@ -46,11 +56,12 @@ const ScatteredCard = memo(function ScatteredCard({
         position: 'absolute',
         left: `calc(${xPct}% - ${(BASE_SIZE * scale) / 2}px)`,
         top: yOffset,
-        zIndex: zIndex,
+        zIndex: isFlipped ? zIndex + 50 : zIndex, // Bring to front when flipped
         width: BASE_SIZE * scale,
         '--rotation': `${rotation}deg`,
+        perspective: '1000px', // Required for 3D flip
       } as React.CSSProperties}
-      custom={{ rotation }}
+      custom={{ rotation, index }}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={shouldReduceMotion ? {
@@ -65,35 +76,69 @@ const ScatteredCard = memo(function ScatteredCard({
       }}
       whileTap={{ scale: 0.97 }}
     >
-      <div
-        className={styles.imageWrapper + ' ' + (variant === 'circular' ? styles.circularWrapper : '')}
-        onClick={onClick}
-        onContextMenu={e => e.preventDefault()}
+      <motion.div 
+        className={styles.flipper}
+        initial={false}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, type: "spring", stiffness: 260, damping: 20 }}
+        onClick={handleCardClick}
+        onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleCardClick(e) } }}
         role="button"
         tabIndex={0}
-        aria-label={`Open photo: ${memory.caption || memory.name}`}
-        onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } }}
+        aria-label={`Photo: ${memory.caption || memory.name}. Click to flip.`}
       >
-        <img
-          src={publicPath(memory.thumbnailRelativePath)}
-          alt={memory.caption || memory.name}
-          loading="lazy"
-          decoding="async"
-          draggable={false}
-          className={'photo-protected ' + styles.photo}
-          style={
-            memory.width && memory.height
-              ? { aspectRatio: `${memory.width} / ${memory.height}` }
-              : undefined
-          }
-        />
-        {variant === 'tape' && <div className={styles.tape} aria-hidden="true"/>}
-      </div>
+        {/* FRONT */}
+        <div className={styles.front}>
+          <div className={styles.imageWrapper + ' ' + (variant === 'circular' ? styles.circularWrapper : '')}>
+            {index < 3 ? (
+              <InstantCameraPhoto
+                src={publicPath(memory.thumbnailRelativePath)}
+                alt={memory.caption || memory.name}
+                className={'photo-protected ' + styles.photo}
+                aspectRatio={memory.width && memory.height ? `${memory.width} / ${memory.height}` : undefined}
+              />
+            ) : (
+              <img
+                src={publicPath(memory.thumbnailRelativePath)}
+                alt={memory.caption || memory.name}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+                className={'photo-protected ' + styles.photo}
+                style={
+                  memory.width && memory.height
+                    ? { aspectRatio: `${memory.width} / ${memory.height}` }
+                    : undefined
+                }
+              />
+            )}
+            {variant === 'tape' && <div className={styles.tape} aria-hidden="true"/>}
+          </div>
+          {(variant === 'polaroid' || variant === 'tape') && memory.caption && (
+            <p className={styles.caption + ' script'}>{memory.caption}</p>
+          )}
+        </div>
 
-      {/* Caption for polaroid / tape */}
-      {(variant === 'polaroid' || variant === 'tape') && memory.caption && (
-        <p className={styles.caption + ' script'}>{memory.caption}</p>
-      )}
+        {/* BACK */}
+        <div className={styles.back}>
+          <div className={styles.backContent}>
+            {memory.date && <p className={styles.backDate}>{memory.date}</p>}
+            {memory.location && <p className={styles.backLocation}>📍 {memory.location}</p>}
+            <p className={styles.backCaption + ' script'}>{memory.caption || "A beautiful memory"}</p>
+            
+            <button 
+              className={styles.viewFullBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                onClick();
+              }}
+              aria-label="View full screen"
+            >
+              🔍 View Full
+            </button>
+          </div>
+        </div>
+      </motion.div>
     </motion.div>
   )
 })
@@ -146,6 +191,9 @@ export function ScatteredMemoriesBoard({ memories }: Props) {
         >
           {/* Falling petals across the board */}
           <PetalLayer count={20} className={styles.boardPetals} />
+          
+          {/* Animated Journey Line */}
+          <JourneyLine />
 
           {/* Background flower decorations injected dynamically down the page */}
           {Array.from({ length: Math.ceil(memories.length / 5) }).map((_, i) => {
