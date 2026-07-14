@@ -34,7 +34,7 @@ export function FlowerCluster({ flowers, className = '' }: Props) {
                 width: f.size,
                 height: f.size,
                 zIndex: f.depth === 'background' ? 1 : f.depth === 'middle' ? 3 : 5,
-                transform: `rotate(${f.rotation}deg)`
+                transform: `translate(-50%, -50%) rotate(${f.rotation}deg)`
               }}
             />
           )
@@ -51,7 +51,7 @@ export function FlowerCluster({ flowers, className = '' }: Props) {
                 width: f.size,
                 height: f.size,
                 zIndex: f.depth === 'background' ? 1 : f.depth === 'middle' ? 3 : 5,
-                transform: `rotate(${f.rotation}deg)`
+                transform: `translate(-50%, -50%) rotate(${f.rotation}deg)`
               }}
             />
           )
