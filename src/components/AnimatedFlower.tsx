@@ -1,7 +1,7 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import type { FlowerItem } from '../data/flowerDecorations'
 import { publicPath } from '../lib/publicPath'
-import { flowerBloom, flowerGrow, flowerSway } from '../animations/flowerVariants'
+import { flowerBloom, flowerGrow } from '../animations/flowerVariants'
 import { useMemo } from 'react'
 
 interface Props {
@@ -10,8 +10,6 @@ interface Props {
 }
 
 export function AnimatedFlower({ flower, index = 0 }: Props) {
-  const shouldReduceMotion = useReducedMotion()
-  
   // Decide entrance variant based on asset name or index
   const entranceVariant = useMemo(() => {
     if (flower.asset.includes('leaf') || flower.asset.includes('fern') || flower.asset.includes('eucalyptus')) {
@@ -41,12 +39,11 @@ export function AnimatedFlower({ flower, index = 0 }: Props) {
         opacity: flower.opacity
       }}
       initial="hidden"
-      whileInView={shouldReduceMotion ? "visible" : ["visible", "idle"]}
+      whileInView="visible"
       viewport={{ once: true, margin: '150px' }}
       variants={{
         hidden: entranceVariant.hidden,
-        visible: entranceVariant.visible,
-        idle: flowerSway.idle
+        visible: entranceVariant.visible
       }}
     />
   )

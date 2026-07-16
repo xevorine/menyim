@@ -12,6 +12,9 @@ import styles from './ScatteredMemoriesBoard.module.css'
 import { publicPath } from '../lib/publicPath'
 import { InstantCameraPhoto } from './InstantCameraPhoto'
 import { JourneyLine } from './JourneyLine'
+import { PenguinDelivery } from './PenguinDelivery'
+import { HiddenMemory } from './HiddenMemory'
+import { ParallaxContainer } from './ParallaxContainer'
 
 interface Props {
   memories: Memory[]
@@ -195,23 +198,33 @@ export function ScatteredMemoriesBoard({ memories }: Props) {
           {/* Animated Journey Line */}
           <JourneyLine />
 
+          <PenguinDelivery />
+          <HiddenMemory onDiscover={() => setLightboxIndex(0)} />
+
           {/* Background flower decorations injected dynamically down the page */}
-          {Array.from({ length: Math.ceil(memories.length / 5) }).map((_, i) => {
-            // Distribute them vertically roughly every 600px
-            const yPos = i * 550
-            return (
-              <div 
-                key={`gc-${i}`} 
-                className={styles.galleryCluster} 
-                style={{ top: yPos }}
-                aria-hidden="true"
-              >
-                <FlowerCluster
-                  flowers={galleryRowClusters[i % galleryRowClusters.length]}
-                />
-              </div>
-            )
-          })}
+          <ParallaxContainer intensity={1.5} style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+            {Array.from({ length: Math.ceil(memories.length / 5) }).map((_, i) => {
+              // Distribute them vertically roughly every 600px
+              const top = 300 + i * 600
+              const cluster = galleryRowClusters[i % galleryRowClusters.length]
+              
+              if (!cluster) return null
+
+              return (
+                <div 
+                  key={i} 
+                  className={styles.galleryCluster}
+                  style={{
+                    top: `${top}px`,
+                    opacity: 0.8
+                  }}
+                  aria-hidden="true"
+                >
+                  <FlowerCluster flowers={cluster} />
+                </div>
+              )
+            })}
+          </ParallaxContainer>
 
           {/* Scattered cards */}
           {memories.map((memory, i) => {

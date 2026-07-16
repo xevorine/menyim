@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import { giftContent } from '../data/giftContent'
 import { FlowerCluster } from './FlowerCluster'
 import { PetalLayer } from './PetalLayer'
@@ -10,6 +11,14 @@ interface Props {
 }
 
 export function IntroScreen({ onOpen }: Props) {
+  const [isOpening, setIsOpening] = useState(false)
+
+  const handleOpen = () => {
+    if (isOpening) return
+    setIsOpening(true)
+    onOpen()
+  }
+
   return (
     <motion.section
       className={styles.intro}
@@ -73,7 +82,8 @@ export function IntroScreen({ onOpen }: Props) {
         >
           <button
             className={'btn btn-primary ' + styles.openBtn}
-            onClick={onOpen}
+            onClick={handleOpen}
+            disabled={isOpening}
             aria-label="Open your gift"
           >
             <span>🌸</span> Buka

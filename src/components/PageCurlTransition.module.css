@@ -1,0 +1,34 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  perspective: 1000px;
+  margin: -50px 0;
+  pointer-events: none;
+}
+
+.curlShadow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0) 70%);
+}
+
+.curlPage {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--color-ivory) 0%, transparent 100%);
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+}
+
+.curlHighlight {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 40%);
+}

@@ -11,13 +11,25 @@ export const flowerBloom: Variants = {
   visible: (custom) => ({
     opacity: custom?.opacity || 1,
     scale: 1,
-    rotate: custom?.rotation || 0,
+    rotate: [
+      custom?.rotation || 0,
+      (custom?.rotation || 0) + 2, 
+      (custom?.rotation || 0) - 1, 
+      (custom?.rotation || 0)
+    ],
     x: "-50%",
     y: "-50%",
     transition: {
-      duration: 1.2,
-      ease: [0.34, 1.56, 0.64, 1], // Spring-like ease out
-      delay: custom?.delay || 0
+      opacity: { duration: 1.2, delay: custom?.delay || 0 },
+      scale: { duration: 1.2, ease: [0.34, 1.56, 0.64, 1], delay: custom?.delay || 0 },
+      rotate: {
+        duration: 4,
+        repeat: Infinity,
+        ease: 'easeInOut',
+        delay: (custom?.delay || 0) + 1.2 // Start swaying after entrance
+      },
+      x: { duration: 0 },
+      y: { duration: 0 }
     }
   })
 }
@@ -28,6 +40,7 @@ export const flowerGrow: Variants = {
     scaleY: 0.2,
     x: "-50%",
     y: "-40%",
+    rotate: custom?.rotation || 0,
     originY: 1
   }),
   visible: (custom) => ({
@@ -35,11 +48,25 @@ export const flowerGrow: Variants = {
     scaleY: 1,
     x: "-50%",
     y: "-50%",
+    rotate: [
+      custom?.rotation || 0,
+      (custom?.rotation || 0) + 2, 
+      (custom?.rotation || 0) - 1, 
+      (custom?.rotation || 0)
+    ],
     originY: 1,
     transition: {
-      duration: 1.0,
-      ease: 'easeOut',
-      delay: custom?.delay || 0
+      opacity: { duration: 1.0, delay: custom?.delay || 0 },
+      scaleY: { duration: 1.0, ease: 'easeOut', delay: custom?.delay || 0 },
+      rotate: {
+        duration: 4,
+        repeat: Infinity,
+        ease: 'easeInOut',
+        delay: (custom?.delay || 0) + 1.0 // Start swaying after entrance
+      },
+      x: { duration: 0 },
+      y: { duration: 0 },
+      originY: { duration: 0 }
     }
   })
 }
@@ -61,21 +88,6 @@ export const petalFall: Variants = {
     transition: {
       duration: 2.5,
       ease: 'easeOut',
-      delay: custom?.delay || 0
-    }
-  })
-}
-
-// Very subtle sway, barely noticeable
-export const flowerSway: Variants = {
-  idle: (custom) => ({
-    x: "-50%",
-    y: "-50%",
-    rotate: [(custom?.rotation || 0), (custom?.rotation || 0) + 2, (custom?.rotation || 0) - 1, (custom?.rotation || 0)],
-    transition: {
-      duration: 4,
-      repeat: Infinity,
-      ease: 'easeInOut',
       delay: custom?.delay || 0
     }
   })

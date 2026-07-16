@@ -1,0 +1,49 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.ribbonLayer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 40px;
+  transform: translateY(-50%);
+  z-index: 2; /* In front of content while wrapped */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ribbonTailLeft, .ribbonTailRight {
+  height: 24px;
+  background: var(--color-dusty-pink);
+  width: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.ribbonTailLeft {
+  border-radius: 4px 0 0 4px;
+  transform-origin: right center;
+}
+
+.ribbonTailRight {
+  border-radius: 0 4px 4px 0;
+  transform-origin: left center;
+}
+
+.ribbonKnot {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: var(--color-burgundy);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 3;
+}

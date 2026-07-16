@@ -16,7 +16,14 @@ export function InstantCameraPhoto({ src, alt, className = '', style, aspectRati
   const shouldReduceMotion = useReducedMotion()
 
   return (
-    <div ref={ref} className={`${styles.container} ${className}`} style={style}>
+    <motion.div 
+      ref={ref} 
+      className={`${styles.container} ${className}`} 
+      style={style}
+      initial={shouldReduceMotion ? false : { y: 10, rotate: -2 }}
+      animate={isInView ? { y: 0, rotate: 0 } : {}}
+      transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 2.2 }} // Settling motion at the end
+    >
       {/* The actual photo */}
       <motion.img
         src={src}
@@ -26,20 +33,30 @@ export function InstantCameraPhoto({ src, alt, className = '', style, aspectRati
         draggable={false}
         className={'photo-protected ' + styles.photo}
         style={{ aspectRatio }}
-        initial={{ filter: 'blur(20px) contrast(0.5) brightness(1.5)' }}
-        animate={isInView ? { filter: 'blur(0px) contrast(1) brightness(1)' } : {}}
+        initial={{ 
+          opacity: 0.1, 
+          filter: 'blur(8px) grayscale(100%) contrast(0.8) brightness(1.2)' 
+        }}
+        animate={
+          isInView 
+            ? (shouldReduceMotion 
+                ? { opacity: 1, filter: 'blur(0px) grayscale(0%) contrast(1) brightness(1)' } 
+                : { opacity: 1, filter: 'blur(0px) grayscale(0%) contrast(1) brightness(1)' }) 
+            : {}
+        }
         transition={shouldReduceMotion ? { duration: 0 } : { duration: 2.5, ease: 'easeOut', delay: 0.2 }}
       />
       
-      {/* Flash overlay */}
+      {/* Flash overlay - optional, kept from original or can be removed. I will tone it down. */}
       {!shouldReduceMotion && (
         <motion.div
           className={styles.flash}
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: [0, 1, 0] } : {}}
+          animate={isInView ? { opacity: [0, 0.4, 0] } : {}}
           transition={{ duration: 0.4, times: [0, 0.1, 1], ease: 'easeOut' }}
+          style={{ pointerEvents: 'none' }}
         />
       )}
-    </div>
+    </motion.div>
   )
 }
