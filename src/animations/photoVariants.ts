@@ -20,7 +20,7 @@ export const magneticSnapLeft: Variants = {
       stiffness: 120,
       damping: 14,
       mass: 1.2,
-      delay: (custom?.index || 0) * 0.1,
+      delay: ((custom?.index || 0) % 8) * 0.05,
     }
   })
 }
@@ -38,7 +38,7 @@ export const magneticSnapRight: Variants = {
       stiffness: 110,
       damping: 15,
       mass: 1.1,
-      delay: (custom?.index || 0) * 0.1,
+      delay: ((custom?.index || 0) % 8) * 0.05,
     }
   })
 }
@@ -56,7 +56,7 @@ export const magneticSnapTop: Variants = {
       stiffness: 130,
       damping: 13,
       mass: 1.3,
-      delay: (custom?.index || 0) * 0.1,
+      delay: ((custom?.index || 0) % 8) * 0.05,
     }
   })
 }
@@ -74,7 +74,7 @@ export const magneticSnapBottom: Variants = {
       stiffness: 115,
       damping: 14,
       mass: 1.2,
-      delay: (custom?.index || 0) * 0.1,
+      delay: ((custom?.index || 0) % 8) * 0.05,
     }
   })
 }

@@ -32,16 +32,16 @@ export function EnvelopeReveal({ isOpen, firstPhoto, onComplete }: Props) {
     if (state === 'opening') {
       const timer = setTimeout(() => {
         if (!unmountedRef.current) setState('bursting')
-      }, 800)
+      }, 400)
       return () => clearTimeout(timer)
     }
 
     if (state === 'bursting') {
-      // The burst animation takes about 1.7s. 
-      // We wait for 1.8s and then go straight to the final photo spread!
+      // The burst animation takes about 1.0s. 
+      // We wait for 1.0s and then go straight to the final photo spread!
       const timer = setTimeout(() => {
         if (!unmountedRef.current) onComplete()
-      }, 1800)
+      }, 1000)
       return () => clearTimeout(timer)
     }
 

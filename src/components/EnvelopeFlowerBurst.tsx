@@ -73,7 +73,7 @@ export function EnvelopeFlowerBurst() {
             opacity: 1,
           }}
           transition={{
-            duration: 1.7,
+            duration: 1.0,
             delay: flower.delay,
             ease: [0.22, 1, 0.36, 1],
           }}

@@ -66,31 +66,6 @@ export function BouquetComposition({ photos }: Props) {
         isInView={isInView}
       />
 
-      {/* Floating photos behind/around the bouquet */}
-      {visiblePhotos.map((photo, i) => {
-        const placement = PHOTO_PLACEMENTS[i]
-        if (!placement) return null
-        return (
-          <motion.div
-            key={photo.id}
-            initial={shouldReduceMotion ? { opacity: 0, y: 0, rotate: placement.rotation } : { opacity: 0, y: 100, rotate: placement.rotation - 10 }}
-            animate={isInView ? { opacity: 1, y: 0, rotate: placement.rotation } : {}}
-            transition={{ duration: 1.2, delay: shouldReduceMotion ? 0 : 1.5 + placement.delay, ease: 'easeOut' }}
-            style={{
-              position: 'absolute',
-              ...placement.style,
-              zIndex: 6,
-            }}
-          >
-            <FloatingPhoto 
-              memory={photo} 
-              size={placement.size} 
-              delay={shouldReduceMotion ? 0 : 1.5 + placement.delay} 
-            />
-          </motion.div>
-        )
-      })}
-
       {/* Phase 3: Filler flowers and details fading in */}
       <BouquetLayer 
         flowers={phase3Flowers} 
@@ -99,25 +74,6 @@ export function BouquetComposition({ photos }: Props) {
         shouldReduceMotion={shouldReduceMotion}
         isInView={isInView}
       />
-
-      {/* Mascots sliding in */}
-      <motion.div
-        initial={shouldReduceMotion ? { opacity: 0, x: 0, rotate: -10 } : { opacity: 0, x: -100, rotate: -20 }}
-        animate={isInView ? { opacity: 1, x: 0, rotate: -10 } : {}}
-        transition={{ duration: 1.5, delay: shouldReduceMotion ? 0 : 3.5, type: 'spring' }}
-        style={{ position: 'absolute', bottom: '10%', left: '5%', zIndex: 10, width: 120, height: 120 }}
-      >
-        <AxolotlSticker />
-      </motion.div>
-
-      <motion.div
-        initial={shouldReduceMotion ? { opacity: 0, x: 0, rotate: 10 } : { opacity: 0, x: 100, rotate: 20 }}
-        animate={isInView ? { opacity: 1, x: 0, rotate: 10 } : {}}
-        transition={{ duration: 1.5, delay: shouldReduceMotion ? 0 : 3.8, type: 'spring' }}
-        style={{ position: 'absolute', bottom: '5%', right: '5%', zIndex: 10, width: 120, height: 120 }}
-      >
-        <PenguinSticker />
-      </motion.div>
     </div>
   )
 }
