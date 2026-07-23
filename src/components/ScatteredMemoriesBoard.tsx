@@ -41,6 +41,7 @@ const ScatteredCard = memo(function ScatteredCard({
   const shouldReduceMotion = useReducedMotion()
   const entranceVariant = getPhotoVariant(index)
   const [isFlipped, setIsFlipped] = useState(false)
+  const isVideo = memory.relativePath.match(/\.(mp4|webm|mov|mkv)$/i)
 
   const BASE_SIZE = 155  // px — base photo width before scale
 
@@ -95,10 +96,26 @@ const ScatteredCard = memo(function ScatteredCard({
           <div className={styles.imageWrapper + ' ' + (variant === 'circular' ? styles.circularWrapper : '')}>
             {index < 3 ? (
               <InstantCameraPhoto
-                src={publicPath(memory.thumbnailRelativePath)}
+                src={isVideo ? publicPath(memory.relativePath) : publicPath(memory.thumbnailRelativePath)}
                 alt={memory.caption || memory.name}
                 className={'photo-protected ' + styles.photo}
                 aspectRatio={memory.width && memory.height ? `${memory.width} / ${memory.height}` : undefined}
+              />
+            ) : isVideo ? (
+              <video
+                src={publicPath(memory.relativePath)}
+                className={'photo-protected ' + styles.photo}
+                muted
+                loop
+                playsInline
+                autoPlay={false}
+                onMouseOver={(e) => { e.currentTarget.play().catch(() => {}) }}
+                onMouseOut={(e) => { e.currentTarget.pause(); e.currentTarget.currentTime = 0; }}
+                style={
+                  memory.width && memory.height
+                    ? { aspectRatio: `${memory.width} / ${memory.height}` }
+                    : undefined
+                }
               />
             ) : (
               <img

@@ -26,6 +26,7 @@ const THUMBNAIL_MAX_WIDTH = 600
 
 const SUPPORTED_EXTS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif'])
 const HEIC_EXTS = new Set(['.heic', '.heif'])
+const VIDEO_EXTS = new Set(['.mp4', '.webm', '.mov', '.mkv'])
 
 // Temp/partial download file patterns to skip
 const IGNORED_PATTERNS = [
@@ -89,7 +90,7 @@ function collectImages(dir, baseDir) {
         continue
       }
       const ext = path.extname(entry.name).toLowerCase()
-      if (SUPPORTED_EXTS.has(ext) || HEIC_EXTS.has(ext)) {
+      if (SUPPORTED_EXTS.has(ext) || HEIC_EXTS.has(ext) || VIDEO_EXTS.has(ext)) {
         results.push(fullPath)
       }
     }
@@ -138,6 +139,11 @@ async function generateThumbnail(srcPath, relPath, originalSrc) {
 
   const ext = path.extname(relPath).toLowerCase()
   const isHeic = HEIC_EXTS.has(ext)
+  const isVideo = VIDEO_EXTS.has(ext)
+
+  if (isVideo) {
+    return { thumbnailSrc: originalSrc, width: 0, height: 0 }
+  }
 
   if (isHeic) {
     // Check if sharp heif support exists

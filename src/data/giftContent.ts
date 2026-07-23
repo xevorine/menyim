@@ -28,7 +28,7 @@ I hope this little collection makes you smile.`,
 
   finalMessage: 'Every moment with you is a small memory to keep.',
 
-  albumUrl: 'https://photos.app.goo.gl/Gym5GudqPNojmWxi7',
+  albumUrl: 'https://drive.google.com/drive/folders/1iMkImsCALu-9Yzzs3cjZCKkt3joTe6q9?usp=sharing',
 
   // Set to true once you've placed a file at public/audio/background-music.mp3
   audioEnabled: false,

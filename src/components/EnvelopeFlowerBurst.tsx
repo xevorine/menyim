@@ -19,11 +19,11 @@ const FLOWER_TYPES = [
 // Base size is 120px, scale is 0.5 to 1.8. Without willChange, it's safe to push counts higher.
 const generateBurstElements = () => {
   const elements = []
-  for (let i = 0; i < 300; i++) {
+  for (let i = 0; i < 450; i++) {
     const angle = Math.random() * Math.PI * 2
     
-    // Spread them even further! Distance up to 1000px from center.
-    const distance = Math.pow(Math.random(), 0.5) * 1000
+    // Spread them very far to fill the screen! Distance up to 1400px from center.
+    const distance = Math.pow(Math.random(), 0.6) * 1400
     
     const x = Math.cos(angle) * distance
     const y = Math.sin(angle) * distance

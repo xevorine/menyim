@@ -4,6 +4,7 @@ import { FlowerCluster } from './FlowerCluster'
 import { galleryRowClusters } from '../data/flowerDecorations'
 import styles from './HiddenMemory.module.css'
 import { publicPath } from '../lib/publicPath'
+import { generatedMemories } from '../data/generatedMemories'
 
 interface Props {
   onDiscover: () => void
@@ -29,7 +30,30 @@ export function HiddenMemory({ onDiscover }: Props) {
       >
         <div className={styles.polaroid} onClick={handleReveal} role="button" tabIndex={0} onKeyDown={e => e.key === 'Enter' && handleReveal()}>
           <div className={styles.photoFrame}>
-            <img src={publicPath('photos/memories/3.jpeg')} alt="Hidden memory" />
+            {generatedMemories.length > 0 ? (
+              (() => {
+                const memory = generatedMemories[Math.floor(Math.random() * generatedMemories.length)]
+                const isVideo = memory.relativePath.match(/\.(mp4|webm|mov|mkv)$/i)
+                return isVideo ? (
+                  <video
+                    src={publicPath(memory.relativePath)}
+                    className="photo-protected"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    muted
+                    loop
+                    playsInline
+                    autoPlay
+                  />
+                ) : (
+                  <img
+                    src={publicPath(memory.thumbnailRelativePath)}
+                    alt="Hidden memory"
+                  />
+                )
+              })()
+            ) : (
+              <div style={{ padding: '2rem', textAlign: 'center' }}>No photos yet</div>
+            )}
           </div>
           <p className={styles.caption + ' script'}>You found a hidden memory! ✨</p>
         </div>

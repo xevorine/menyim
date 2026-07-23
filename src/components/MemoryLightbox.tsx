@@ -16,6 +16,7 @@ export function MemoryLightbox({ memories, initialIndex, onClose }: Props) {
   const [index, setIndex] = useState(initialIndex)
   const [direction, setDirection] = useState(0)
   const current = memories[index]
+  const isVideo = current?.relativePath.match(/\.(mp4|webm|mov|mkv)$/i)
 
   // Preload adjacent images
   const adjacentSrcs = [
@@ -104,14 +105,25 @@ export function MemoryLightbox({ memories, initialIndex, onClose }: Props) {
             transition={{ type: 'spring', stiffness: 200, damping: 25, mass: 0.8 }}
             className={styles.photoWrapper}
           >
-            <img
-              src={publicPath(current.relativePath)}
-              alt={current.caption || current.name}
-              className={styles.photo + ' photo-protected'}
-              draggable={false}
-              onContextMenu={e => e.preventDefault()}
-              decoding="async"
-            />
+            {isVideo ? (
+              <video
+                src={publicPath(current.relativePath)}
+                className={styles.photo + ' photo-protected'}
+                controls
+                autoPlay
+                playsInline
+                onContextMenu={e => e.preventDefault()}
+              />
+            ) : (
+              <img
+                src={publicPath(current.relativePath)}
+                alt={current.caption || current.name}
+                className={styles.photo + ' photo-protected'}
+                draggable={false}
+                onContextMenu={e => e.preventDefault()}
+                decoding="async"
+              />
+            )}
           </motion.div>
         </AnimatePresence>
 

@@ -39,16 +39,28 @@ export function FloatingPhoto({ memory, size = 160, delay = 0, rotation = 0, sty
       }}
     >
       <div className={styles.polaroidFrame}>
-        <img
-          src={publicPath(memory.thumbnailRelativePath)}
-          alt={memory.caption || memory.name}
-          loading="lazy"
-          decoding="async"
-          draggable={false}
-          onContextMenu={e => e.preventDefault()}
-          className="photo-protected"
-          style={{ width: '100%', height: 'auto', display: 'block' }}
-        />
+        {memory.relativePath.match(/\.(mp4|webm|mov|mkv)$/i) ? (
+          <video
+            src={publicPath(memory.relativePath)}
+            className="photo-protected"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+            muted
+            loop
+            playsInline
+            autoPlay
+          />
+        ) : (
+          <img
+            src={publicPath(memory.thumbnailRelativePath)}
+            alt={memory.caption || memory.name}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+            onContextMenu={e => e.preventDefault()}
+            className="photo-protected"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        )}
       </div>
     </motion.div>
   )

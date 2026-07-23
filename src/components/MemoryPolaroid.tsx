@@ -31,6 +31,7 @@ export function MemoryPolaroid({
   style,
 }: Props) {
   const isCircular = variant === 'circular'
+  const isVideo = memory.relativePath.match(/\.(mp4|webm|mov|mkv)$/i)
 
   return (
     <motion.div
@@ -49,19 +50,44 @@ export function MemoryPolaroid({
         aria-label={onClick ? `Open photo: ${memory.caption || memory.name}` : undefined}
         onKeyDown={onClick ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick() } } : undefined}
       >
-        <img
-          src={publicPath(memory.thumbnailRelativePath)}
-          alt={memory.caption || memory.name}
-          loading={priority ? 'eager' : 'lazy'}
-          decoding="async"
-          className={clsx(styles.photo, 'photo-protected')}
-          draggable={false}
-          style={
-            memory.width && memory.height
-              ? { aspectRatio: `${memory.width} / ${memory.height}` }
-              : undefined
-          }
-        />
+        {isVideo ? (
+          <video
+            src={publicPath(memory.relativePath)}
+            className={clsx(styles.photo, 'photo-protected')}
+            muted
+            loop
+            playsInline
+            autoPlay={priority}
+            onMouseOver={(e) => {
+              if (!priority) e.currentTarget.play().catch(() => {})
+            }}
+            onMouseOut={(e) => {
+              if (!priority) {
+                e.currentTarget.pause()
+                e.currentTarget.currentTime = 0
+              }
+            }}
+            style={
+              memory.width && memory.height
+                ? { aspectRatio: `${memory.width} / ${memory.height}` }
+                : undefined
+            }
+          />
+        ) : (
+          <img
+            src={publicPath(memory.thumbnailRelativePath)}
+            alt={memory.caption || memory.name}
+            loading={priority ? 'eager' : 'lazy'}
+            decoding="async"
+            className={clsx(styles.photo, 'photo-protected')}
+            draggable={false}
+            style={
+              memory.width && memory.height
+                ? { aspectRatio: `${memory.width} / ${memory.height}` }
+                : undefined
+            }
+          />
+        )}
         {/* Tape decoration for tape variant */}
         {variant === 'tape' && (
           <div className={styles.tapeStrip} aria-hidden="true"/>

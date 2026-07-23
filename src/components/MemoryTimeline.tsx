@@ -27,15 +27,26 @@ function TimelineItem({ memory, index }: { memory: Memory; index: number }) {
 
       <div className={styles.card}>
         <div className={styles.imageWrapper}>
-          <img
-            src={publicPath(memory.thumbnailRelativePath)}
-            alt={memory.caption || memory.name}
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-            onContextMenu={e => e.preventDefault()}
-            className={'photo-protected ' + styles.photo}
-          />
+          {memory.relativePath.match(/\.(mp4|webm|mov|mkv)$/i) ? (
+            <video
+              src={publicPath(memory.relativePath)}
+              className={'photo-protected ' + styles.photo}
+              muted
+              loop
+              playsInline
+              autoPlay
+            />
+          ) : (
+            <img
+              src={publicPath(memory.thumbnailRelativePath)}
+              alt={memory.caption || memory.name}
+              loading="lazy"
+              decoding="async"
+              draggable={false}
+              onContextMenu={e => e.preventDefault()}
+              className={'photo-protected ' + styles.photo}
+            />
+          )}
         </div>
         {(memory.caption || memory.date || memory.location) && (
           <div className={styles.info}>
